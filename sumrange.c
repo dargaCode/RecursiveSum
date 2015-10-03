@@ -23,7 +23,7 @@ int main(int argc, string argv[])
     if (!is_input_valid(argc, argv))
     {
         printf(COLOR_RED);
-        printf("Usage: <optional min> <max>\n");
+        printf("Usage: sumrange <optional min> <max>\n");
         printf("(Integers from 1 - %i) \n", MAX_LIMIT);
         printf(COLOR_RESET);
 
