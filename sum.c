@@ -25,14 +25,45 @@ int main(int argc, string argv[])
         printf("Usage: <optional min> <max>\n");
         printf("(Integers from 1 - %i) \n", MAX_LIMIT);
         printf(COLOR_RESET);
-        
-        // failure 
+
+        // failure
         return 1;
     }
+
+    // set min and max
+    int min = 0;
+    int max = 0;
+
+    // only max provided
+    if (argc == 2)
+    {
+        min = 0;
+        max = atoi(argv[1]);
+    }
+
+    // min and max provided
+    if (argc == 3)
+    {
+        min = atoi(argv[1]);
+        max = atoi(argv[2]);
+
+        // min is always the smaller number
+        if (max < min)
+        {
+            // swap
+            int temp = min;
+            min = max;
+            max = temp;
+        }
+    }
+
+    // debug
     printf(COLOR_GREEN);
     printf("recursive sum! \n");
+    printf("min: %i \n", min);
+    printf("max: %i \n", max);
     printf(COLOR_RESET);
-    
+
     // success
     return 0;
 }
@@ -46,7 +77,7 @@ bool is_input_valid(int argc, string argv[])
     }
     // min and max
     if (argc == 3)
-    {        
+    {
         int min = atoi(argv[1]);
         int max = atoi(argv[2]);
         // values too small or not ints
@@ -59,23 +90,11 @@ bool is_input_valid(int argc, string argv[])
         {
             return false;
         }
-        // smaller value is always min
-        if (min > max)
-        {
-            // swap
-            int temp = min;
-            min = max;
-            max = temp;
-        }
-        printf("min: %i \n", min);
-        printf("max: %i \n", max);      
     }
     // max only
     else
     {
         int max = atoi(argv[1]);
-        printf("max: %i \n", max);
-        
         if (max < 1 || max > 100)
         {
             return false;
