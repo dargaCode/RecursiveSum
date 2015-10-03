@@ -15,6 +15,7 @@
 
 // prototypes
 bool is_input_valid(int argc, string argv[]);
+int recursive_sum(int min, int max);
 
 int main(int argc, string argv[])
 {
@@ -57,12 +58,8 @@ int main(int argc, string argv[])
         }
     }
 
-    // debug
-    printf(COLOR_GREEN);
-    printf("recursive sum! \n");
-    printf("min: %i \n", min);
-    printf("max: %i \n", max);
-    printf(COLOR_RESET);
+    int total = recursive_sum(min, max);
+    printf("Sum of range is %i \n", total);
 
     // success
     return 0;
@@ -102,4 +99,29 @@ bool is_input_valid(int argc, string argv[])
     }
     // success
     return true;
+}
+
+int recursive_sum(int min, int max)
+{
+
+
+    // base case
+    if (max == min)
+    {
+        printf(COLOR_GREEN);
+        printf("%i = %i - reached base case!\n", max, min);
+        printf("Starting sum = new sum %i \n", min);
+        printf(COLOR_RESET);
+        return min;
+    }
+    // recurse
+    else
+    {
+        printf("%i > %i - keep going...\n", max, min);
+        int prev_sum = recursive_sum(min, max - 1);
+        int new_sum = prev_sum + max;
+        printf("Sum %i + %i = new sum %i \n",
+            prev_sum, max, new_sum);
+        return new_sum;
+    }
 }
