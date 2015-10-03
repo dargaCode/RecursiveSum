@@ -103,8 +103,6 @@ bool is_input_valid(int argc, string argv[])
 
 int recursive_sum(int min, int max)
 {
-
-
     // base case
     if (max == min)
     {
