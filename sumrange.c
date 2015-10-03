@@ -59,7 +59,9 @@ int main(int argc, string argv[])
     }
 
     int total = recursive_sum(min, max);
-    printf("Sum of range is %i \n", total);
+    printf(COLOR_GREEN);
+    printf("Sum of range %i to %i is %i \n", min, max, total);
+    printf(COLOR_RESET);
 
     // success
     return 0;
@@ -108,7 +110,7 @@ int recursive_sum(int min, int max)
     {
         printf(COLOR_GREEN);
         printf("%i = %i - reached base case!\n", max, min);
-        printf("Starting sum = new sum %i \n", min);
+        printf("%i is starting sum.\n", min);
         printf(COLOR_RESET);
         return min;
     }
@@ -118,8 +120,8 @@ int recursive_sum(int min, int max)
         printf("%i > %i - keep going...\n", max, min);
         int prev_sum = recursive_sum(min, max - 1);
         int new_sum = prev_sum + max;
-        printf("Sum %i + %i = new sum %i \n",
-            prev_sum, max, new_sum);
+        printf("%i + sum %i = new sum %i \n",
+            max, prev_sum, new_sum);
         return new_sum;
     }
 }
